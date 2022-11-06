@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text animation</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: gray;
+            color: #fff;
+            min-height: 100vh;    
+            text-transform: capitalize;  
+            overflow: hidden;     
+            font-size: 4rem; 
+        }
+        section p{
+            margin: 0;
+        }
+        .heading-bg{
+            /* min-height: 1rem; */
+            overflow: hidden;
+            border-top: 2px solid #fff;
+        }
+        .heading-bg h1 {
+            display: none;
+            margin: 0;
+        }
+        .show-heading{
+            display: block !important;
+            animation: anim 1s ease;
+        }
+        @keyframes anim {
+            from{
+                transform: translateY(-160%);
+            }
+            to{
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <p>hello iam,</p>
+        <div class="heading-bg">
+            <h1>rasel mahmud</h1>
+            <h1>web developer</h1>
+            <h1>web designer</h1>
+            <h1>engineer</h1>
+        </div>
+
+    </section>
+
+
+    <script>
+        let headingBg = document.querySelectorAll('.heading-bg h1');
+        let increment = 0;
+        let animation = () => {
+            for (let i = 0; i < headingBg.length; i++) {
+                headingBg[i].classList.remove('show-heading');
+            }
+            headingBg[increment].classList.add('show-heading');
+            if (increment == headingBg.length-1) {
+                increment = 0;
+            }
+            else{
+                increment++;
+            }
+            setTimeout(animation, 3000)
+        }
+        window.onload = animation;
+        </script>
+</body>
+</html>
